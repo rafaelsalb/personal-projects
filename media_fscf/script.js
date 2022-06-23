@@ -14,6 +14,7 @@ function resultado()
         let soma = ra1 + ra2 + ra3 + ra4;
         media = soma / 4;
         s4 += 0.1;
+        console.log(s4, media);
     }
 
     document.getElementById("resultado").textContent = "Você precisa de:" + toString(s4);

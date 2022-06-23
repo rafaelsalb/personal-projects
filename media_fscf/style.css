@@ -1,0 +1,8 @@
+.center-container {
+    margin: auto;
+    width: 50%;
+    border: 3px solid turquoise;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+}

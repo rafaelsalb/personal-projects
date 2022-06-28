@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.js"></script>
+        <script src="../lib/p5.js"></script>
         <script src="sketch.js"></script>
         <script src="player.js"></script>
         <script src="rays.js"></script>
         <script src="wall.js"></script>
+        <script src="list_walls.js"></script>
     </head>
     <body>
         <h1>Raycasting</h1>
+        <div id="canvas"></div>
+        <div>Add a wall:</div>
+        <input type="text" id="x1" placeholder="X1: ">
+        <input type="text" id="y1" placeholder="Y1: ">
+        <input type="text" id="x2" placeholder="X2: ">
+        <input type="text" id="y2" placeholder="Y2: ">
+        <input type="button" id="add_wall" value="Add" onclick="add_wall()">
+        <br> <br>
+        <div id="list_of_walls">Walls: </div>
     </body>
 
 </html>

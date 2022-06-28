@@ -29,6 +29,8 @@ class Player
                 this.boundaries[j].show();
                 let pt = this.rays[i].cast(this.boundaries[j], j);
                 if (pt) {
+                    stroke(255);
+                    strokeWeight(1);
                     line(this.pos.x, this.pos.y, pt.x, pt.y);
                 }
             }
@@ -66,7 +68,7 @@ class Player
     move(x, y)
     {
         let velocity = new p5.Vector(x, y);
-        let collision = this.get_collisions()
+        let collision = this.check_bound_collisions()
         velocity.normalize();
 
         if (collision.x > 0 & velocity.x > 0) {
@@ -87,7 +89,7 @@ class Player
         this.pos.y += velocity.y * this.speed;
     }
 
-    get_collisions()
+    check_bound_collisions()
     {
         this.collision_dir = new p5.Vector(0, 0);
 
@@ -111,6 +113,34 @@ class Player
         }
         return this.collision_dir;
     }
+
+    // t_f(x1, x2, x3, x4, y1, y2, y3, y4)
+    // {
+    //     return ((x1 - x3) * (y3 - y4) - (x3 - x4) * (y1 - y3)) / ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4));
+    // }
+
+    // u_f(x1, x2, x3, x4, y1, y2, y3, y4)
+    // {
+    //     return ((x1 - x3) * (y1 - y2) - (y1 - y3) * (x1 - x2)) / ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4));
+    // }
+
+    // get_collisions(dirx, diry, wall)
+    // {
+    //     this.x1 = this.pos.x;
+    //     this.y1 = this.pos.y;
+
+    //     this.x2 = dirx + this.pos.x;
+    //     this.y2 = diry + this.pos.y;
+
+    //     this.x3 = wall.a.x;
+    //     this.y3 = wall.a.y;
+
+    //     this.x4 = wall.b.x;
+    //     this.y4 = wall.b.y;
+
+    //     this.t = this.t_f(this.x1, this.x2, this.x3, this.x4, this.y1, this.y2, this.y3, this.y4);
+    //     this.u = this.u_f(this.x1, this.x2, this.x3, this.x4, this.y1, this.y2, this.y3, this.y4);
+    // }
 
     look_at(x, y)
     {

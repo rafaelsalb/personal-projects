@@ -64,3 +64,12 @@ function remove_wall(index)
     walls.splice(index, 1);
     list_walls();
 }
+
+function toggle_fov()
+{
+    if (player.show_fov) {
+        player.show_fov = false;
+    } else {
+        player.show_fov = true;
+    }
+}

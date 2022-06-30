@@ -5,7 +5,7 @@ class Player
         this.boundaries = layer;
         this.pos = new p5.Vector(x, y);
         this.rays = [];
-        this.interval = 360 / fov
+        this.interval = 360 / fov;
         for (let i = 0; i < fov; i += this.interval) {
             this.rays.push(new Ray(i - fov/2));
         }
@@ -18,6 +18,8 @@ class Player
             "left" : 65,
             "right" : 68
         };
+
+        this.show_fov = false;
     }
 
     update()
@@ -35,6 +37,9 @@ class Player
                 }
             }
         }
+        if (this.show_fov) {
+            this.draw_fov();
+        }
     }
 
     show()
@@ -42,6 +47,17 @@ class Player
         noStroke();
         fill(0, 255, 0);
         circle(this.pos.x, this.pos.y, this.size);
+    }
+
+    draw_fov()
+    {
+        let last = this.rays.length - 1;
+        this.rays[0].show();
+        this.rays[last].show();
+        stroke(255, 0, 0);
+        strokeWeight(1);
+
+        line(this.rays[0].pos.x + 100*this.rays[0].dir.x, this.rays[0].pos.y + 100*this.rays[0].dir.y, this.rays[last].pos.x+ 100*this.rays[last].dir.x, this.rays[last].pos.y+ 100*this.rays[last].dir.y);
     }
 
     handle_input()

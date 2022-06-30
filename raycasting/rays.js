@@ -37,7 +37,7 @@ class Ray
 
         // console.log(index.toString(), this.t, this.u);
 
-        if ((0 < this.t) && (0 < this.u && this.u < 1))
+        if ((0 <= this.t) && (0 <= this.u && this.u <= 1))
         {
             this.px = this.x1 + this.t * (this.x2 - this.x1);
             this.py = this.y1 + this.t * (this.y2 - this.y1);
@@ -58,9 +58,9 @@ class Ray
 
     show()
     {
-        stroke(255);
+        stroke(255, 0, 0);
         strokeWeight(1);
-        line(this.pos.x, this.pos.y, this.pos.x + 20 * this.dir.x, this.pos.y + 20 * this.dir.y);
+        line(this.pos.x, this.pos.y, this.pos.x + 100 * this.dir.x, this.pos.y + 100 * this.dir.y);
     }
 
     debug(index)

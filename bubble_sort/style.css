@@ -1,3 +1,28 @@
-.cabecalho {
-    font-family: "Comic Sans MS";
+body {
+    background-color:rgb(15, 15, 15);
+    font-family: "Calibri";
+    color: white;
+}
+
+#canvas {
+    background-color: black;
+    padding-left: 20%;
+}
+
+.settings {
+    display: flex;
+    padding-top: 5px;
+    padding-left: 20%;
+    font-size: 28px;
+}
+
+.settings input, button {
+    font-size: 24px;
+    max-width: 80px;
+}
+
+.times {
+    padding-top: 5px;
+    padding-left: 20%;
+    font-size: 28px;
 }

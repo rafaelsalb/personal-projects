@@ -1,13 +1,37 @@
 <html>
 <meta charset="utf-8">
+
     <head>
-        <title>Personal projects</title>
+
+        <title>Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/navbar.css">
+
     </head>
+
     <body>
 
-        <a href="../personal-projects/bubble_sort/index.html">Bubble sort</a>
-        <a href="../personal-projects/raycasting/index.html">Raycasting</a>
-    
+        <nav>
+            <a href="#">Home</a>
+            <a href="bubble_sort/index.html">Bubble sort</a>
+            <a href="raycasting/index.html">Raycasting</a>
+        </nav>
+
+        <div class="project-list">
+            <table id="project-list">
+                <tr>
+                    <td onclick="window.location.href='bubble_sort/index.html'">
+                        <img src="bubble_sort.png">
+                        <p>Bubble sort</p>
+                    </td>
+                    <td onclick="window.location.href='raycasting/index.html'">
+                        <img src="https://pikuma.com/images/courses/raycasting/raycasting-map.jpg">
+                        <p>Raycasting</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
     </body>
 
 </html>

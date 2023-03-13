@@ -10,14 +10,14 @@ let iterations = 0;
 
 function start()
 {
-    canvas = createCanvas(1200, 600);
+    canvas = createCanvas(Utils.elementWidth(parent_div), 600);
     canvas.parent("canvas");
     let amt_bars = parseInt(document.getElementById("length").value);
     bar_width = width / amt_bars;
-    bar_height = 2 * height / amt_bars;
+    bar_height = height / amt_bars;
     bars = [];
     for (let i = 1; i <= amt_bars; ++i) {
-        bars.push(height * i / width);
+        bars.push(lerp(1, amt_bars, i / amt_bars));
     }
     bars = fisher_yates(bars);
     run = true;
@@ -47,9 +47,11 @@ function fisher_yates(array)
 
 function setup()
 {
+    parent_div = document.getElementById("canvas");
     frameRate(600);
     noStroke();
-    canvas = createCanvas(1200, 600);
+    console.log(Utils.elementWidth(parent_div));
+    canvas = createCanvas(Utils.elementWidth(parent_div), 600);
     canvas.parent("canvas");
     noLoop();
 }
@@ -81,7 +83,6 @@ function draw()
             stop_timer();
         }
         if (is_sorted()) {
-            console.log("acabou");
             end = true;
         }
     }

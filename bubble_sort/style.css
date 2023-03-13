@@ -5,8 +5,9 @@ body {
 }
 
 #canvas {
+    margin-left: 16.5%;
+    width: 67%;
     background-color: black;
-    padding-left: 20%;
 }
 
 .settings {

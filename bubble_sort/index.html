@@ -21,8 +21,16 @@
     <div id="canvas"></div>
     
     <div class="settings">
-        <label for="length">Number of elements (n):&nbsp</label> <input id="length" type="number" value="20"> <br>
-        <button value="Update" onclick="start()">Start</button>
+
+        <label for="case">Case:&nbsp</label>
+        <select id="case">
+            <option value="random">Random</option>
+            <option value="best">Best</option>
+            <option value="worst">Worst</option>
+        </select>
+
+        <label for="length">&nbspNumber of elements (n):&nbsp</label> <input id="length" type="number" value="20">
+            <button value="Update" onclick="start()">Start</button>
             &nbspElapsed time:&nbsp
             <div id="timer">00:00</div>
             &nbspIterations:&nbsp
@@ -30,13 +38,8 @@
     </div>
     <div class="times">
         Time complexity: average case: O(n²), best case: O(n), worst case: O(n²)
-        <br>
-        Estimated time to sort elements:
-        <br>
-        <div id="average-case"></div>
-        <br>
-        <div id="best-case"></div>
     </div>
+    <hr/>
     <div id="description">
         <p>
             A sorting algorithm is used to organize data according to a user-defined criteria. Bubble sort is a very simple sorting algorithm, usually used for educational purposes only, as it is very slow at sorting large sets of data, but very easily understandable.

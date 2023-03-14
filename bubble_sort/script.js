@@ -16,16 +16,32 @@ function start()
     bar_width = width / amt_bars;
     bar_height = height / amt_bars;
     bars = [];
+    iterations = 0;
+    idx = 0;
+
     for (let i = 1; i <= amt_bars; ++i) {
         bars.push(lerp(1, amt_bars, i / amt_bars));
     }
-    bars = fisher_yates(bars);
+
+    let _case = document.getElementById("case").value;
+
+    switch (_case) {
+        case "random":
+            bars = fisher_yates(bars);
+            break;
+        case "worst":
+            bars = bars.reverse();
+            break;
+        case "best":
+            break;
+    }
+
     run = true;
     end = false;
     loop();
     stop_timer();
     start_timer();
-    document.getElementById("average-case").innerText = amt_bars * amt_bars + " iterations.";
+    document.getElementById("average-case").innerText += amt_bars * amt_bars + " iterations.";
 }
 
 function is_sorted()

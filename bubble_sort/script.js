@@ -6,6 +6,7 @@ let bar_height = 0;
 let run = false;
 let end = false;
 let iterations = 0;
+let loops = 0;
 
 
 function start()
@@ -17,6 +18,7 @@ function start()
     bar_height = height / amt_bars;
     bars = [];
     iterations = 0;
+    loops = 0;
     idx = 0;
 
     for (let i = 1; i <= amt_bars; ++i) {
@@ -90,8 +92,9 @@ function draw()
             bars[idx-1] = temp;
         }
 
-        if (idx == bars.length - 1) {
+        if (idx == bars.length - 1 - loops) {
             idx = 0;
+            loops++;
         }
         ++idx;
         if (end) {

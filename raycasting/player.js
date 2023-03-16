@@ -5,13 +5,12 @@ class Player
         this.boundaries = layer;
         this.pos = new p5.Vector(x, y);
         this.rays = [];
-        this.interval = 360 / fov;
-        for (let i = 0; i < fov; i += this.interval) {
-            this.rays.push(new Ray(i - fov/2));
+        for (let i = 0; i < fov; ++i) {
+            this.rays.push(new Ray(i - fov/2, i));
         }
         this.angle = 0;
-        this.speed = 10;
-        this.size = 20;
+        this.speed = 5;
+        this.size = 10;
         this.KEYS = {
             "up" : 87,
             "down" : 83,
@@ -24,6 +23,8 @@ class Player
 
     update()
     {
+        const view = [];
+
         for (let i = 0; i < this.rays.length; ++i) {
             this.rays[i].update(this.pos.x, this.pos.y, this.angle);
             // this.rays[i].show();
@@ -34,12 +35,18 @@ class Player
                     stroke(255);
                     strokeWeight(1);
                     line(this.pos.x, this.pos.y, pt.x, pt.y);
+                    view.push(pt.z);
+                }
+                else {
+                    view.push({dist: -1});
                 }
             }
         }
         if (this.show_fov) {
             this.draw_fov();
         }
+
+        return view;
     }
 
     show()
@@ -109,13 +116,13 @@ class Player
     {
         this.collision_dir = new p5.Vector(0, 0);
 
-        if (this.pos.x >= width - this.size) {
+        if (this.pos.x >= width/2 - this.size) {
             this.collision_dir.x = 1;
         }
         else if (this.pos.x <= this.size) {
             this.collision_dir.x = -1;
         }
-        else if (this.pos.x > this.size & this.pos.x > width - this.size) {
+        else if (this.pos.x > this.size & this.pos.x > width/2 - this.size) {
             this.collision_dir.x = 0;
         }
         if (this.pos.y >= height - this.size) {
@@ -129,34 +136,6 @@ class Player
         }
         return this.collision_dir;
     }
-
-    // t_f(x1, x2, x3, x4, y1, y2, y3, y4)
-    // {
-    //     return ((x1 - x3) * (y3 - y4) - (x3 - x4) * (y1 - y3)) / ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4));
-    // }
-
-    // u_f(x1, x2, x3, x4, y1, y2, y3, y4)
-    // {
-    //     return ((x1 - x3) * (y1 - y2) - (y1 - y3) * (x1 - x2)) / ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4));
-    // }
-
-    // get_collisions(dirx, diry, wall)
-    // {
-    //     this.x1 = this.pos.x;
-    //     this.y1 = this.pos.y;
-
-    //     this.x2 = dirx + this.pos.x;
-    //     this.y2 = diry + this.pos.y;
-
-    //     this.x3 = wall.a.x;
-    //     this.y3 = wall.a.y;
-
-    //     this.x4 = wall.b.x;
-    //     this.y4 = wall.b.y;
-
-    //     this.t = this.t_f(this.x1, this.x2, this.x3, this.x4, this.y1, this.y2, this.y3, this.y4);
-    //     this.u = this.u_f(this.x1, this.x2, this.x3, this.x4, this.y1, this.y2, this.y3, this.y4);
-    // }
 
     look_at(x, y)
     {

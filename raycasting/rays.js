@@ -1,8 +1,10 @@
 class Ray
 {
-    constructor(angle)
+    constructor(angle, index)
     {
         this.angle = radians(angle);
+
+        this.index = index;
 
         this.pos = new p5.Vector(0, 0);
         this.dir = new p5.Vector(cos(this.angle), sin(this.angle));
@@ -18,7 +20,7 @@ class Ray
         return ((x1 - x3) * (y1 - y2) - (y1 - y3) * (x1 - x2)) / ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4));
     }
 
-    cast(wall, index)
+    cast(wall)
     {
         this.x1 = this.pos.x;
         this.y1 = this.pos.y;
@@ -41,7 +43,14 @@ class Ray
         {
             this.px = this.x1 + this.t * (this.x2 - this.x1);
             this.py = this.y1 + this.t * (this.y2 - this.y1);
-            return new p5.Vector(this.px, this.py);
+            let length = sqrt((this.px - this.pos.x)*(this.px - this.pos.x) + (this.py - this.pos.y)*(this.py - this.pos.y));
+            return new p5.Vector(this.px, this.py, 
+                {
+                    dist: length * cos(this.angle),
+                    color: wall.color,
+                    idx: this.index,
+                    height: wall.height
+                });
         } else {
             return;
         }

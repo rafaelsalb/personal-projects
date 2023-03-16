@@ -1,28 +1,57 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
         <script src="sketch.js"></script>
         <script src="player.js"></script>
         <script src="rays.js"></script>
         <script src="wall.js"></script>
         <script src="list_walls.js"></script>
+        <script src="renderer.js"></script>
+        <script src="editor.js"></script>
         <link href="style.css" rel="stylesheet">
+        <link href="../css/navbar.css" rel="stylesheet">
+        <link href="../css/common.css" rel="stylesheet">
     </head>
-    <body onload="alert('This version of the project is very outdated, a newer version is coming soon.')">
-        <div class="center">
-            <h1 class="center">Raycasting</h1>
-            <div class="canvas" id="canvas"></div> <br>
-            <input class="" type="button" id="toggle_fov" value="Toggle FOV" onclick="toggle_fov()">
-            <div class="center">Add a wall:</div>
-            <input class="" type="text" id="x1" placeholder="X1: ">
-            <input class="" type="text" id="y1" placeholder="Y1: ">
-            <input class="" type="text" id="x2" placeholder="X2: ">
-            <input class="" type="text" id="y2" placeholder="Y2: ">
-            <input class="" type="button" id="add_wall" value="Add" onclick="add_wall()">
-            <br> <br>
-            <div class="center" id="list_of_walls">Walls: </div>
+
+    <body>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../bubble_sort/index.html">Bubble sort</a>
+            <a href="../raycasting/index.html">Raycasting</a>
+        </nav>
+
+        <h1>Raycasting engine</h1>
+
+        <div id="engine-container">
+            <div id="canvas-container">
+                <div class="canvas" id="canvas"></div> <br>
+
+                <div class="settings-panel">
+                    <div class="settings">
+                        <input class="" type="button" id="toggle_fov" value="Toggle FOV" onclick="toggle_fov()">
+                        &nbspClick on the black space to create a wall. Press WASD to move.
+                        <br><br>
+                        <a>Add a wall: </a>
+                        <br>
+                        <input class="text_input" type="text" id="x1" placeholder="X1: ">
+                        <input class="text_input" type="text" id="y1" placeholder="Y1: ">
+                        <input class="text_input" type="text" id="x2" placeholder="X2: ">
+                        <input class="text_input" type="text" id="y2" placeholder="Y2: ">
+                        <input class="text_input" type="text" id="r" placeholder="R: ">
+                        <input class="text_input" type="text" id="g" placeholder="G: ">
+                        <input class="text_input" type="text" id="b" placeholder="B: ">
+                        <input class="text_input" type="text" id="h" placeholder="Height: ">
+                        <input class="" type="button" id="add_wall_c" value="Add" onclick="add_wall()">
+                        <br><br>
+                        Walls: (change the properties and press "Update")
+                        <div class="list_of_walls" id="list_of_walls">Paredes: </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
         </div>
     </body>
-
 </html>

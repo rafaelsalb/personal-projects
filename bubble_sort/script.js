@@ -45,7 +45,7 @@ function start()
     loop();
     stop_timer();
     start_timer();
-    document.getElementById("average-case").innerText += amt_bars * amt_bars + " iterations.";
+    document.getElementById("estimated-iterations").innerText = 2 + ((amt_bars) * (amt_bars - 1) / 2);
 }
 
 function setup()

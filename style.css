@@ -9,11 +9,12 @@ body {
 
 #project-list {
     width: 100%;
-    border-spacing: 15px 0;
+    border-spacing: 16px 16px;
 }
 
 img {
     display: flex;
+    margin-top: 4px;
     margin-left: auto;
     margin-right: auto;
     width: 400px;
@@ -35,4 +36,10 @@ td:hover {
 td p {
     margin-top: 12px;
     margin-bottom: 12px;
+}
+
+.about {
+    margin-left: 16px;
+    margin-right: 16px;
+    font-size: 18px;
 }

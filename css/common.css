@@ -11,3 +11,12 @@ h1 {
     justify-content: center;
     font-size: 32px;
 }
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid rgb(30, 30, 30);
+    margin-left: 10px;
+    margin-right: 10px;
+}

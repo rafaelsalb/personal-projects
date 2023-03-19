@@ -1,0 +1,8 @@
+Type pairs of coordinates to make a cell alive in the starting state, separated by a comma. The grid is 50x50, so coordinates span from 0 to 49 in both axis.
+For example: "9,1"
+
+0,1
+1,2
+2,0
+2,1
+2,2

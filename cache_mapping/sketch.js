@@ -5,7 +5,6 @@ const cache = new Cache(cache_capacity_Bytes)
 function setup()
 {
     canvas = createCanvas(cell_width * 17, 256 + cell_height * mem_capacity_Bytes / 4);
-    cache.clear();
 }
 
 function draw()

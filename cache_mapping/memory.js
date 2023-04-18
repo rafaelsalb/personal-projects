@@ -64,6 +64,8 @@ class Cache extends Memory
         this.label = "Memória Cache";
         this.header[0] = new HeaderCell("Linha", "Palavra");
 
+        this.clear()
+
         this.header.push(new Cell("TAG"));
         for(let i = 0; i < capacity / size_of_block; i++)
         {

@@ -8,9 +8,14 @@ class Cell
         this.data = data === "r" ? "0x" + Math.floor(Math.random() * 255).toString(16) : data;
     }
 
+    set_text(text)
+    {
+        this.data = text;
+    }
+
     set_data(data)
     {
-        this.data = data;
+        this.data = "0x" + data.toString(16);
     }
 
     draw()

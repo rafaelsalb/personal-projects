@@ -11,7 +11,7 @@ class Memory
         {
             this.header.push(new Cell(i));
         }
-        for(let i = 0; i < capacity / size_of_block; i++)
+        for(let i = 0; i < capacity / block_size; i++)
         {
             this.blocks.push(new MemoryBlock(i.toString(16)));
         }
@@ -54,6 +54,21 @@ class Memory
         }
     }
 
+    search(address)
+    {
+        const binary = Utils.toBinary(address);
+        const tag = parseInt(binary.slice(0, 2), 2);
+        const block = parseInt(binary.slice(2, 4), 2);
+        const index = parseInt(binary.slice(4, 6), 2);
+
+        console.log(this.blocks);
+        console.log(this.blocks[tag * block_size + block]);
+        console.log(this.blocks[tag * block_size + block].cells);
+        console.log(this.blocks[tag * block_size + block].cells[index]);
+
+        return this.blocks[tag * block_size + block].cells[index];
+    }
+
 }
 
 class Cache extends Memory
@@ -67,7 +82,7 @@ class Cache extends Memory
         this.clear()
 
         this.header.push(new Cell("TAG"));
-        for(let i = 0; i < capacity / size_of_block; i++)
+        for(let i = 0; i < capacity / block_size; i++)
         {
             this.blocks.push(new CacheLine(i.toString(16)));
         }

@@ -7,7 +7,7 @@ class MemoryBlock
     {
         this.index = index;
         this.cells.push(new Cell(index.toString(16)));
-        for(let i = 0; i < size_of_block; i++)
+        for(let i = 0; i < block_size; i++)
         {
             this.cells.push(new Cell("r"));
         }

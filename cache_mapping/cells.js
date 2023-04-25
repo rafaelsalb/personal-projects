@@ -1,7 +1,6 @@
 class Cell
 {
     data;
-    address;
 
     constructor(data)
     {

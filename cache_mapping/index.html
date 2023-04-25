@@ -9,14 +9,24 @@
     <script src="cells.js"></script>
     <script src="block.js"></script>
     <script src="memory.js"></script>
+    <script src="cpu.js"></script>
     <script src="sketch.js"></script>
     <!-- <link href="style.css" rel="stylesheet"> -->
     <link href="../css/navbar.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet">
+    <link href="sketch_style.css" rel="stylesheet">
 </head>
 
 <body>
-
+    <div id="sketch">
+        <div id="canvas"></div>
+        <div id="search_menu">
+            <b>Buscar valor por endereço</b>
+            <br>
+            <input id="address" type="number" placeholder="Endereço">
+            <button id="search_button" onclick="menu_search()">Buscar</button>
+        </div>
+    </div>
 </body>
 
 </html>

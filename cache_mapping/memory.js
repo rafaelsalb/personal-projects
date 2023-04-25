@@ -4,7 +4,7 @@ class Memory
     blocks = [];
     label = "Memória Principal";
 
-    constructor(capacity)
+    constructor(capacity, cache)
     {
         this.header.push(new HeaderCell("Bloco", "Palavra"));
         for(let i = 0; i < 4; i++)
@@ -61,15 +61,6 @@ class Memory
         const block = parseInt(binary.slice(2, 4), 2);
         const index = parseInt(binary.slice(4, 6), 2);
 
-        // console.log(binary);
-        // console.log(tag);
-        // console.log(block);
-        // console.log(index)
-        // console.log(this.blocks);
-        // console.log(this.blocks[tag * block_size + block]);
-        // console.log(this.blocks[tag * block_size + block].cells);
-        // console.log(this.blocks[tag * block_size + block].cells[index + 1]);
-
         return this.blocks[tag * block_size + block].cells[index + 1];
     }
 
@@ -83,13 +74,18 @@ class Cache extends Memory
         this.label = "Memória Cache";
         this.header[0] = new HeaderCell("Linha", "Palavra");
 
-        this.clear()
-
         this.header.push(new Cell("TAG"));
         for(let i = 0; i < capacity / block_size; i++)
         {
             this.blocks.push(new CacheLine(i.toString(16)));
         }
+
+        this.clear()
+    }
+
+    is_cache_hit(tag, block)
+    {
+        return this.blocks[block].cells[5].data === tag;
     }
 
 }

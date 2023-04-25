@@ -56,17 +56,21 @@ class Memory
 
     search(address)
     {
-        const binary = Utils.toBinary(address);
+        const binary = Utils.toBinary(address, 6);
         const tag = parseInt(binary.slice(0, 2), 2);
         const block = parseInt(binary.slice(2, 4), 2);
         const index = parseInt(binary.slice(4, 6), 2);
 
-        console.log(this.blocks);
-        console.log(this.blocks[tag * block_size + block]);
-        console.log(this.blocks[tag * block_size + block].cells);
-        console.log(this.blocks[tag * block_size + block].cells[index]);
+        // console.log(binary);
+        // console.log(tag);
+        // console.log(block);
+        // console.log(index)
+        // console.log(this.blocks);
+        // console.log(this.blocks[tag * block_size + block]);
+        // console.log(this.blocks[tag * block_size + block].cells);
+        // console.log(this.blocks[tag * block_size + block].cells[index + 1]);
 
-        return this.blocks[tag * block_size + block].cells[index];
+        return this.blocks[tag * block_size + block].cells[index + 1];
     }
 
 }

@@ -47,10 +47,24 @@ class Memory
     {
         for(let i = 0; i < this.blocks.length; i++)
         {
-            for(let j = 1; j < 5; j++)
+            for(let j = 1; j < this.blocks[i].cells.length; j++)
             {
                 this.blocks[i].cells[j].data = "0x00";
+
+                if(j > 4)
+                {
+                    this.blocks[i].cells[j].data = "";
+                }
             }
+        }
+    }
+
+    fill()
+    {
+        this.clear()
+        for(let i = 0; i < this.blocks.length; i++)
+        {
+            this.blocks[i] = new MemoryBlock(i.toString(16));
         }
     }
 
@@ -61,7 +75,25 @@ class Memory
         const block = parseInt(binary.slice(2, 4), 2);
         const index = parseInt(binary.slice(4, 6), 2);
 
+        for(let i = 0; i < this.blocks[0].cells.length; i++)
+        {
+            this.blocks[tag * block_size + block].cells[i].cell_color = 200;
+        }
+
         return this.blocks[tag * block_size + block].cells[index + 1];
+    }
+
+    insert(address, data)
+    {
+        const binary = Utils.toBinary(address, 6);
+        const tag = parseInt(binary.slice(0, 2), 2);
+        const block = parseInt(binary.slice(2, 4), 2);
+        const index = parseInt(binary.slice(4, 6), 2);
+
+        console.log(tag * block_size + block)
+        console.log(index + 1)
+
+        this.blocks[tag * block_size + block].cells[index + 1].data = data;
     }
 
 }

@@ -18,7 +18,7 @@ function draw()
     push();
     translate(24, 24);
     memory.draw();
-    translate(cell_width * 2.5, cell_height * 20);
+    translate(cell_width * 7, cell_height * 2.5);
     cpu.draw();
     pop();
     push();
@@ -30,7 +30,8 @@ function draw()
 function menu_search()
 {
     let address = document.getElementById("address").value;
-    if(address != null && address != "" && address >= 0 && address < mem_capacity_Bytes) {
+    if(address != null && address != "" && address >= 0 && address < mem_capacity_Bytes)
+    {
         cpu.read(Number(address));
     }
 }

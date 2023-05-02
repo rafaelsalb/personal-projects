@@ -4,3 +4,27 @@
     top: 280px;
     left: 664px;
 }
+
+#memory_menu {
+    display: flex;
+    z-index: 10;
+    position: absolute;
+    top: 600px;
+    left: 24px;
+}
+
+#insert_menu {
+    display: flex;
+    width: 300px;
+}
+
+#memory_menu, input {
+    width: 80px;
+}
+
+#cache_menu {
+    z-index: 10;
+    position: absolute;
+    top: 216px;
+    left: 664px;
+}

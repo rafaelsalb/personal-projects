@@ -20,6 +20,18 @@
 <body>
     <div id="sketch">
         <div id="canvas"></div>
+        <div id="memory_menu">
+            <div id="insert-menu">
+                <input id="insert_address" type="number" placeholder="Endereço">
+                <input id="insert_data" type="number" placeholder="Dado">
+            </div>
+            <button id="insert" onclick="memory.insert(document.getElementById('insert_address').value, document.getElementById('insert_data').value)">Inserir</button>
+            <button id="clear_memory" onclick="memory.clear()">Limpar</button>
+            <button id="fill_memory" onclick="memory.fill()">Preencher</button>
+        </div>
+        <div id="cache_menu">
+            <button id="clear_cache" onclick="cache.clear()">Limpar</button>
+        </div>
         <div id="search_menu">
             <b>Buscar valor por endereço</b>
             <br>

@@ -1,10 +1,12 @@
 class Cell
 {
+    cell_color;
     data;
 
     constructor(data)
     {
         this.data = data === "r" ? "0x" + Math.floor(Math.random() * 255).toString(16) : data;
+        this.cell_color = 127;
     }
 
     set_text(text)
@@ -21,7 +23,7 @@ class Cell
     {
         strokeWeight(2);
         stroke(255);
-        fill(127);
+        fill(this.cell_color);
         rect(0, 0, cell_width, cell_height);
 
         strokeWeight(0);

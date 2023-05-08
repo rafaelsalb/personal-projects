@@ -90,10 +90,12 @@ class Memory
         const block = parseInt(binary.slice(2, 4), 2);
         const index = parseInt(binary.slice(4, 6), 2);
 
+        const hex = "0x" + Number(data).toString(16);
+
         console.log(tag * block_size + block)
         console.log(index + 1)
 
-        this.blocks[tag * block_size + block].cells[index + 1].data = data;
+        this.blocks[tag * block_size + block].cells[index + 1].data = hex;
     }
 
 }

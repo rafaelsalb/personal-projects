@@ -4,7 +4,7 @@ class Memory
     blocks = [];
     label = "Memória Principal";
 
-    constructor(capacity, cache)
+    constructor(capacity)
     {
         this.header.push(new HeaderCell("Bloco", "Palavra"));
         for(let i = 0; i < 4; i++)
@@ -90,12 +90,10 @@ class Memory
         const block = parseInt(binary.slice(2, 4), 2);
         const index = parseInt(binary.slice(4, 6), 2);
 
-        const hex = "0x" + Number(data).toString(16);
-
         console.log(tag * block_size + block)
         console.log(index + 1)
 
-        this.blocks[tag * block_size + block].cells[index + 1].data = hex;
+        this.blocks[tag * block_size + block].cells[index + 1].data = data;
     }
 
 }

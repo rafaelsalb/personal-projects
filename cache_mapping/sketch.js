@@ -25,13 +25,22 @@ function draw()
     translate(24 + cell_width * 10, 24);
     cache.draw();
     pop();
+
+    fill(255);
+    textSize(24);
+    text("Método de mapeamento: " + method_name(curr_method), 24, height - 24);
 }
 
-function menu_search()
+function search()
 {
     let address = document.getElementById("address").value;
     if(address != null && address != "" && address >= 0 && address < mem_capacity_Bytes)
     {
         cpu.read(Number(address));
     }
+}
+
+function update_method()
+{
+    curr_method = document.getElementById("method_selector").value;
 }

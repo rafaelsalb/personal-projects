@@ -1,5 +1,6 @@
 class CPU
 {
+    method;
     memory;
     cache;
     address_in;
@@ -10,6 +11,7 @@ class CPU
     {
         this.memory = memory;
         this.cache = cache;
+        this.method = METHODS.direct;
     }
 
     draw()
@@ -56,13 +58,13 @@ class CPU
             push();
             textAlign(LEFT, CENTER);
             rotate(-PI/2);
-            text("BLOCO", -16, -68);
+            text("BLOCO", -16, -71);
             pop();
 
             push();
             textAlign(LEFT, CENTER);
             rotate(-PI/2);
-            text("PALAVRA", -16, -38);
+            text("PALAVRA", -16, -42);
             pop();
 
             pop();

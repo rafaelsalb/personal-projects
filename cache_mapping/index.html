@@ -36,9 +36,16 @@
             <b>Buscar valor por endereço</b>
             <br>
             <input id="address" type="number" placeholder="Endereço">
-            <button id="search_button" onclick="menu_search()">Buscar</button>
+            <button id="search_button" onclick="search()">Buscar</button>
         </div>
     </div>
+    <label for="method_selector">Método de mapeamento: </label>
+    <select name="method_selector" id="method_selector">
+        <option value="0">Direto</option>
+        <option value="1">Associativo</option>
+        <option value="2">Associativo por blocos</option>
+    </select>
+    <input id="update_method_button" type="button" value="Atualizar" onclick="update_method()">
 </body>
 
 </html>

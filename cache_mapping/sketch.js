@@ -28,7 +28,10 @@ function draw()
 
     fill(255);
     textSize(24);
-    text("Método de mapeamento: " + method_name(curr_method), 24, height - 24);
+    text("Método de mapeamento: " + METHOD_NAMES[curr_method], 24, height - 52);
+    if (curr_method != METHODS.direct) {
+        text("Política de mapeamento: " + POLICY_NAMES[curr_policy], 24, height - 24);
+    }
 }
 
 function search()
@@ -43,4 +46,9 @@ function search()
 function update_method()
 {
     curr_method = document.getElementById("method_selector").value;
+}
+
+function update_policy()
+{
+    curr_policy = document.getElementById("policy_selector").value;
 }

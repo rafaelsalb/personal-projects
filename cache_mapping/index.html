@@ -18,6 +18,22 @@
 </head>
 
 <body>
+    <label for="method_selector">Método de mapeamento: </label>
+    <select name="method_selector" id="method_selector">
+        <option value=0>Direto</option>
+        <option value=1>Associativo</option>
+        <option value=2>Associativo por blocos</option>
+    </select>
+    <input onload="update_method()" id="update_method_button" type="button" value="Atualizar" onclick="update_method()">
+    
+    <label for="policy_selector">Política de mapeamento: </label>
+    <select name="policy_selector" id="policy_selector">
+        <option value=0>Random</option>
+        <option value=1>LFU</option>
+        <option value=2>LRU</option>
+    </select>
+    <input onload="update_policy()" id="update_policy_button" type="button" value="Atualizar" onclick="update_policy()">
+    
     <div id="sketch">
         <div id="canvas"></div>
         <div id="memory_menu">
@@ -39,13 +55,6 @@
             <button id="search_button" onclick="search()">Buscar</button>
         </div>
     </div>
-    <label for="method_selector">Método de mapeamento: </label>
-    <select name="method_selector" id="method_selector">
-        <option value="0">Direto</option>
-        <option value="1">Associativo</option>
-        <option value="2">Associativo por blocos</option>
-    </select>
-    <input id="update_method_button" type="button" value="Atualizar" onclick="update_method()">
 </body>
 
 </html>

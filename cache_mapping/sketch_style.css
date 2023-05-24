@@ -1,7 +1,7 @@
 #search_menu {
     z-index: 10;
     position: absolute;
-    top: 280px;
+    top: 301px;
     left: 664px;
 }
 
@@ -9,22 +9,23 @@
     display: flex;
     z-index: 10;
     position: absolute;
-    top: 600px;
+    top: 624px;
     left: 24px;
 }
 
 #insert_menu {
     display: flex;
-    width: 300px;
+    width: 320px;
 }
 
 #memory_menu, input {
-    width: 80px;
+    width: 126px;
 }
 
 #cache_menu {
     z-index: 10;
     position: absolute;
-    top: 216px;
+    width: 32px;
+    top: 238px;
     left: 664px;
 }

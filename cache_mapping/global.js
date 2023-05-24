@@ -9,20 +9,13 @@ const METHODS = {
     associative: 1,
     associative_by_blocks: 2
 };
-const mapping_policies = ["random", "LFU", "LRU"];
-
+const METHOD_NAMES = ["Direto", "Associativo", "Associativo em blocos"];
 let curr_method = METHODS.direct;
 
-let method_name = (m) => {
-    switch(m)
-    {
-        case "0":
-            return "Direto";
-        case "1":
-            return "Associativo";
-        case "2":
-            return "Associativo em blocos";
-        default:
-            return null;
-    }
-}
+const POLICIES = {
+    random: 0,
+    LFU: 1,
+    LRU: 2
+};
+const POLICY_NAMES = ["Random", "Least Frequently Used (LFU)", "Least Recently Used (LRU)"];
+let curr_policy = POLICIES.random;

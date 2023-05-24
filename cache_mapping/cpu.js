@@ -1,6 +1,5 @@
 class CPU
 {
-    method;
     memory;
     cache;
     address_in;
@@ -11,7 +10,6 @@ class CPU
     {
         this.memory = memory;
         this.cache = cache;
-        this.method = METHODS.direct;
     }
 
     draw()

@@ -169,6 +169,15 @@ class Cache extends Memory
                     }
                 }
                 return -1;
+            case POLICIES.random:
+                for (let i = 0; i < 4; i++)
+                {
+                    if (this.blocks[i].cells[5].data === tag)
+                    {
+                        return i;
+                    }
+                }
+                return -1;
         }
     }
 

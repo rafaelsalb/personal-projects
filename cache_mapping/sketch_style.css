@@ -22,6 +22,10 @@
     width: 126px;
 }
 
+/* #memory_menu, button {
+    width: 64px;
+} */
+
 #cache_menu {
     z-index: 10;
     position: absolute;
@@ -36,4 +40,8 @@
 
 .upper_menu input {
     width: 126px;
+}
+
+#clean_reset_checkbox {
+    width: 13px;
 }

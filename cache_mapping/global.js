@@ -19,3 +19,5 @@ const POLICIES = {
 };
 const POLICY_NAMES = ["Random", "Least Frequently Used (LFU)", "Least Recently Used (LRU)"];
 let curr_policy = POLICIES.random;
+
+let fill_on_reset = true;

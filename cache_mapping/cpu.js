@@ -258,6 +258,18 @@ class CPU
     reset()
     {
         this.address_in = null;
+
+        if (fill_on_reset)
+        {
+            for (let i = 0; i < 4; i++)
+            {
+                for (let j = 1; j < 5; j++)
+                {
+                    this.cache.blocks[i].cells[j] = this.memory.blocks[i].cells[j];
+                }
+                this.cache.blocks[i].cells[5].data = curr_method == METHODS.direct ? 0 : i;
+            }
+        }
     }
 
 }

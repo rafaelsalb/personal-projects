@@ -36,6 +36,9 @@
             </select>
             <input onload="update_policy()" id="update_policy_button" type="button" value="Atualizar" onclick="update_policy()">
         </div>
+
+        <input type="checkbox" value="clean_reset" name="clean_reset_checkbox" id="clean_reset_checkbox" checked="false" onchange="fill_on_reset = this.checked">
+        <label for="clean_reset_checkbox">Preencher cache ao resetar</label>
     </div>
 
     <div id="sketch">

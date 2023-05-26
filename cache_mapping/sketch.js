@@ -10,6 +10,7 @@ function setup()
     parent_div = document.getElementById("canvas")
     canvas = createCanvas(cell_width * 17, 256 + cell_height * mem_capacity_Bytes / 4);
     canvas.parent("canvas");
+    // document.getElementById("clean_reset_checkbox").checked = false;
 }
 
 function draw()
@@ -46,9 +47,6 @@ function search()
 function update_method()
 {
     curr_method = parseInt(document.getElementById("method_selector").value);
-    memory.reset();
-    cache.reset();
-    cpu.reset();
     update_policy();
 
     if (curr_method == METHODS.direct)

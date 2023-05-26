@@ -45,10 +45,26 @@ function search()
 
 function update_method()
 {
-    curr_method = document.getElementById("method_selector").value;
+    curr_method = parseInt(document.getElementById("method_selector").value);
+    memory.reset();
+    cache.reset();
+    cpu.reset();
+    update_policy();
+
+    if (curr_method == METHODS.direct)
+    {
+        document.getElementById("policy_selector_region").style.visibility = "hidden";
+    }
+    else
+    {
+        document.getElementById("policy_selector_region").style.visibility = "visible";
+    }
 }
 
 function update_policy()
 {
-    curr_policy = document.getElementById("policy_selector").value;
+    curr_policy = parseInt(document.getElementById("policy_selector").value);
+    memory.reset();
+    cache.reset();
+    cpu.reset();
 }

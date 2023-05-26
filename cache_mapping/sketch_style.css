@@ -29,3 +29,11 @@
     top: 238px;
     left: 664px;
 }
+
+.upper_menu {
+    display: flex;
+}
+
+.upper_menu input {
+    width: 126px;
+}

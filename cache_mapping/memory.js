@@ -3,9 +3,12 @@ class Memory
     header = [];
     blocks = [];
     label = "Memória Principal";
+    capacity;
 
     constructor(capacity)
     {
+        this.capacity = capacity;
+
         this.header.push(new HeaderCell("Bloco", "Palavra"));
         for(let i = 0; i < 4; i++)
         {
@@ -96,13 +99,33 @@ class Memory
         this.blocks[tag * block_size + block].cells[index + 1].data = data;
     }
 
+    reset()
+    {
+        this.header.length = 0;
+        this.blocks.length = 0;
+        
+        this.header.push(new HeaderCell("Bloco", "Palavra"));
+        for(let i = 0; i < 4; i++)
+        {
+            this.header.push(new Cell(i));
+        }
+        for(let i = 0; i < this.capacity / block_size; i++)
+        {
+            this.blocks.push(new MemoryBlock(i.toString(16)));
+        }
+    }
+
 }
 
 class Cache extends Memory
 {
+    block_use_count;
+    block_use_history;
+
     constructor(capacity)
     {
         super();
+        this.capacity = capacity;
         this.label = "Memória Cache";
         this.header[0] = new HeaderCell("Linha", "Palavra");
 
@@ -117,7 +140,52 @@ class Cache extends Memory
 
     is_cache_hit(tag, block)
     {
-        return this.blocks[block].cells[5].data === tag;
+        if (curr_method == METHODS.direct)
+        {
+            return this.blocks[block].cells[5].data === tag;
+        }
+        switch (curr_policy)
+        {
+            case POLICIES.LFU:
+                for (let i = 0; i < 4; i++)
+                {
+                    if (this.blocks[i].cells[5].data === tag)
+                    {
+                        this.block_use_count[i] += 1;
+                        return i;
+                    }
+                }
+                return -1;
+            case POLICIES.LRU:
+                for (let i = 0; i < 4; i++)
+                {
+                    if (this.blocks[i].cells[5].data === tag)
+                    {
+                        let temp = i;
+                        this.block_use_history.splice(this.block_use_history.indexOf(i), 1);
+                        this.block_use_history.unshift(temp);
+                        console.log(this.block_use_history, i);
+                        return i;
+                    }
+                }
+                return -1;
+        }
+    }
+
+    reset()
+    {
+        for(let i = 0; i < this.capacity / block_size; i++)
+        {
+            this.blocks[i] = new MemoryBlock(i.toString(16));
+        }
+
+        for(let i = 0; i < this.capacity / block_size; i++)
+        {
+            this.blocks[i] = new CacheLine(i.toString(16));
+        }
+
+        this.clear()
+        this.block_use_count = [0, 0, 0, 0];
     }
 
 }

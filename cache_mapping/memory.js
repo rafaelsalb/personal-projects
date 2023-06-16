@@ -26,7 +26,7 @@ class Memory
         textSize(24);
         textAlign(LEFT, TOP);
         strokeWeight(0);
-        fill(255);
+        fill(curr_color_scheme.headers);
         text(this.label, 0, 0);
         pop();
 
@@ -115,12 +115,20 @@ class Memory
         }
     }
 
+    update_color_scheme()
+    {
+        this.cell_color = curr_color_scheme.secondary;
+    }
+
 }
 
 class Cache extends Memory
 {
     block_use_count;
     block_use_history;
+
+    set_use_count;
+    set_use_history;
 
     constructor(capacity)
     {
@@ -144,36 +152,68 @@ class Cache extends Memory
         {
             return this.blocks[block].cells[5].data === tag;
         }
-        switch (curr_policy)
+        else if (curr_method == METHODS.associative)
         {
+            switch (curr_policy) {
+                case POLICIES.LFU:
+                    for (let i = 0; i < 4; i++) {
+                        if (this.blocks[i].cells[5].data === tag) {
+                            this.block_use_count[i] += 1;
+                            return i;
+                        }
+                    }
+                    return -1;
+                case POLICIES.LRU:
+                    for (let i = 0; i < 4; i++) {
+                        if (this.blocks[i].cells[5].data === tag) {
+                            let temp = i;
+                            this.block_use_history.splice(this.block_use_history.indexOf(i), 1);
+                            this.block_use_history.unshift(temp);
+                            console.log(this.block_use_history, i);
+                            return i;
+                        }
+                    }
+                    return -1;
+                case POLICIES.random:
+                    for (let i = 0; i < 4; i++) {
+                        if (this.blocks[i].cells[5].data === tag) {
+                            return i;
+                        }
+                    }
+                    return -1;
+            }
+        }
+    }
+
+    is_cache_hit_set_associative(address)
+    {
+        const binary = Utils.toBinary(address, 6);
+        const tag = parseInt(binary.slice(0, 3), 2);
+        const set = parseInt(binary.slice(3, 4), 2);
+
+        switch (curr_policy) {
             case POLICIES.LFU:
-                for (let i = 0; i < 4; i++)
-                {
-                    if (this.blocks[i].cells[5].data === tag)
-                    {
-                        this.block_use_count[i] += 1;
+                for (let i = set * 2; i < set * 2 + 2; i++) {
+                    if (this.blocks[i].cells[5].data === tag) {
+                        this.set_use_count[set][i % 2] += 1;
                         return i;
                     }
                 }
                 return -1;
             case POLICIES.LRU:
-                for (let i = 0; i < 4; i++)
-                {
-                    if (this.blocks[i].cells[5].data === tag)
-                    {
+                for (let i = set * 2; i < set * 2 + 2; i++) {
+                    if (this.blocks[i].cells[5].data === tag) {
                         let temp = i;
-                        this.block_use_history.splice(this.block_use_history.indexOf(i), 1);
-                        this.block_use_history.unshift(temp);
-                        console.log(this.block_use_history, i);
+                        this.set_use_history[set].splice(this.set_use_history[set].indexOf(i), 1);
+                        this.set_use_history[set].unshift(temp);
+                        console.log(this.set_use_history, i);
                         return i;
                     }
                 }
                 return -1;
             case POLICIES.random:
-                for (let i = 0; i < 4; i++)
-                {
-                    if (this.blocks[i].cells[5].data === tag)
-                    {
+                for (let i = set * 2; i < set * 2 + 2; i++) {
+                    if (this.blocks[i].cells[5].data === tag) {
                         return i;
                     }
                 }
@@ -195,6 +235,7 @@ class Cache extends Memory
 
         this.clear()
         this.block_use_count = [0, 0, 0, 0];
+        this.block_use_history = [0, 1, 2, 3];
     }
 
 }

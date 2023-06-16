@@ -1,16 +1,27 @@
+:root {
+    --text-color: rgb(17, 17, 17);
+    --button-color: rgb(233, 233, 233);
+    --margem-esquerda: 256px;
+    --margem-topo: 56px;
+}
+
 #search_menu {
     z-index: 10;
     position: absolute;
-    top: 301px;
-    left: 664px;
+    top: calc(301px + var(--margem-topo));
+    left: calc(664px + var(--margem-esquerda));
+}
+
+#search_menu b {
+    color: var(--text-color);
 }
 
 #memory_menu {
     display: flex;
     z-index: 10;
     position: absolute;
-    top: 624px;
-    left: 24px;
+    top: calc(624px + var(--margem-topo));
+    left: calc(24px + var(--margem-esquerda));
 }
 
 #insert_menu {
@@ -30,8 +41,8 @@
     z-index: 10;
     position: absolute;
     width: 32px;
-    top: 238px;
-    left: 664px;
+    top: calc(238px + var(--margem-topo));
+    left: calc(664px + var(--margem-esquerda));
 }
 
 .upper_menu {
@@ -44,4 +55,13 @@
 
 #clean_reset_checkbox {
     width: 13px;
+}
+
+button {
+    background-color: var(--button-color);
+}
+
+.app {
+    margin-top: 56px;
+    margin-left: 256px;
 }

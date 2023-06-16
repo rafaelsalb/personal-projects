@@ -6,7 +6,7 @@ class Cell
     constructor(data)
     {
         this.data = data === "r" ? "0x" + Math.floor(Math.random() * 255).toString(16) : data;
-        this.cell_color = 127;
+        this.cell_color = curr_color_scheme.secondary;
     }
 
     set_text(text)
@@ -22,12 +22,12 @@ class Cell
     draw()
     {
         strokeWeight(2);
-        stroke(255);
-        fill(this.cell_color);
+        stroke(curr_color_scheme.borders);
+        fill(curr_color_scheme.secondary);
         rect(0, 0, cell_width, cell_height);
 
         strokeWeight(0);
-        fill(255);
+        fill(curr_color_scheme.primary);
         textSize(12);
         textAlign(CENTER, CENTER);
         text(this.data, cell_width / 2.0, cell_height / 2.0);
@@ -51,14 +51,14 @@ class HeaderCell extends Cell
     draw()
     {
         strokeWeight(2);
-        stroke(255);
-        fill(127);
+        stroke(curr_color_scheme.borders);
+        fill(curr_color_scheme.secondary);
         rect(0, 0, cell_width, cell_height);
         strokeWeight(1);
         line(0, 0, cell_width, cell_height);
 
         strokeWeight(0);
-        fill(255);
+        fill(curr_color_scheme.primary);
         textSize(12);
         textAlign(LEFT, CENTER);
         text(this.data.lower_half, 0, cell_height * 0.75);

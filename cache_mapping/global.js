@@ -29,7 +29,7 @@ const COLOR_SCHEMES = {
         primary: 255,
         secondary: 127,
         terciary: 64,
-        background: 0,
+        background: 32,
         buttons: 233
     },
     light: {

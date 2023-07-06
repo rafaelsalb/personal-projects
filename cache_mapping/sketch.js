@@ -28,12 +28,33 @@ function draw()
     cache.draw();
     pop();
 
-    fill(curr_color_scheme.headers);
+    push();
+
+    stroke(curr_color_scheme.borders);
+    strokeWeight(2);
+    fill(curr_color_scheme.secondary);
+    rectMode(CORNER);
+    rect(cell_width * 10 + 12, cell_height * 12 - 6, cell_width * 6, cell_width * 3 + 12, 5);
+
+    rect(24, cell_height * 20 - 6, cell_width * 6, cell_height * 3 + 12, 5);
+
+    stroke(curr_color_scheme.headers);
+    strokeWeight(1);
+    fill(curr_color_scheme.primary);
     textSize(24);
-    text("Método de mapeamento: " + METHOD_NAMES[curr_method], 24, height - 52);
+    textAlign(LEFT);
+
+    text("Tamanho da memória: 64 Bytes\nTamanho da cache: 16 Bytes\nTamanho do bloco: 4 Bytes", 24 + 12, cell_height * 20 + 24);
+
+    text("Método de mapeamento:\n" + METHOD_NAMES[curr_method], 24 + cell_width * 10, cell_height * 12 + 24);
     if (curr_method != METHODS.direct) {
-        text("Política de mapeamento: " + POLICY_NAMES[curr_policy], 24, height - 24);
+        text("Política de mapeamento:\n" + POLICY_NAMES[curr_policy], 24 + cell_width * 10, cell_height * 14 + 24);
+        if (curr_method == METHODS.set_associative) {
+            text("Divisão da cache:\n2 vias (2-way)", 24 + cell_width * 10, cell_height * 16 + 24);
+        }
     }
+
+    pop();
 }
 
 function search()

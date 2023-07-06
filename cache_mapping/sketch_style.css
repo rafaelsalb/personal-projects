@@ -61,7 +61,14 @@ button {
     background-color: var(--button-color);
 }
 
+#theme_selector {
+    z-index: 10;
+    position: absolute;
+    top: calc(608px + var(--margem-topo));
+    left: calc(664px + var(--margem-esquerda));
+}
+
 .app {
-    margin-top: 56px;
-    margin-left: 256px;
+    margin-top: var(--margem-topo);
+    margin-left: var(--margem-esquerda);
 }

@@ -35,6 +35,13 @@ class Wall
         this.color.b = b;
     }
 
+    rgb2hex() {
+        const r = Number(this.color.r).toString(16);
+        const g = Number(this.color.g).toString(16);
+        const b = Number(this.color.b).toString(16);
+        return "#" + r.padStart(2, "0") + g.padStart(2, "0") + b.padStart(2, "0");
+    }
+
     setHeight(h) {
         this.height = h;
     }

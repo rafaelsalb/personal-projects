@@ -104,7 +104,6 @@ class Player
             velocity.y = 0;
         }
         else if (collision.y < 0 & velocity.y < 0) {
-            console.log(velocity.y, collision.y);
             velocity.y = 0;
         }
 

@@ -26,7 +26,6 @@ class Editor
             this.objCoords[1].x = 0;
             this.objCoords[1].y = 0;
         }
-        // console.log(this.state);
     }
 
     update() {

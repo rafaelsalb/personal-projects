@@ -34,18 +34,8 @@ class Renderer {
                 let offset = this.wallSize / this.wallSize - curr.height;
 
                 this.y0 = this.horizon + (this.wallSize * projected_size/2);
-                this.y1 = this.y0 - this.wallSize * projected_size;//y0 + projected_half_size*this.wallSize;
-                
-                //console.log(this.y1 - this.y0);
+                this.y1 = this.y0 - this.wallSize * projected_size;
 
-                // if (i == 50) {
-                //     //console.log(projected_size, offset, y0, y1, curr.dist, abs(y1 - y0));
-                //     stroke(0, 0, 255);
-                // }
-                // else if (i == 51) {
-                //     //console.log(projected_size, offset, y0, y1, curr.dist, abs(y1 - y0))
-                //     stroke(0, 255, 0);
-                // }
                 stroke(color.r * brightness, color.g * brightness, color.b * brightness);
 
                 line(4 * curr.idx + this.screenStart, this.y0, 4 * curr.idx + this.screenStart, this.y1);
@@ -72,7 +62,6 @@ class Renderer {
     }
 
     getObjects() {
-        console.log(this.y1 - this.y0);
         return this.objects;
     }
 

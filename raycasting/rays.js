@@ -37,8 +37,6 @@ class Ray
         this.t = this.t_f(this.x1, this.x2, this.x3, this.x4, this.y1, this.y2, this.y3, this.y4);
         this.u = this.u_f(this.x1, this.x2, this.x3, this.x4, this.y1, this.y2, this.y3, this.y4);
 
-        // console.log(index.toString(), this.t, this.u);
-
         if ((0 <= this.t) && (0 <= this.u && this.u <= 1))
         {
             this.px = this.x1 + this.t * (this.x2 - this.x1);

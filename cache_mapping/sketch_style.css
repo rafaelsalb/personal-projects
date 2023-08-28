@@ -1,7 +1,7 @@
 :root {
     --text-color: rgb(17, 17, 17);
     --button-color: rgb(233, 233, 233);
-    --margem-esquerda: 256px;
+    --margem-esquerda: calc(50% - 544px);
     --margem-topo: 56px;
 }
 
@@ -33,9 +33,9 @@
     width: 126px;
 }
 
-/* #memory_menu, button {
-    width: 64px;
-} */
+#update_method_button {
+    max-width: 64px;
+}
 
 #cache_menu {
     z-index: 10;

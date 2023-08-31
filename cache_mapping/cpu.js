@@ -63,7 +63,7 @@ class CPU
                 push();
                 textAlign(LEFT, CENTER);
                 rotate(-PI/2);
-                text("BLOCO", -16, -98);
+                text("TAG", -16, -98);
                 pop();
 
                 push();

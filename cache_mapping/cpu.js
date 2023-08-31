@@ -69,7 +69,7 @@ class CPU
                 push();
                 textAlign(LEFT, CENTER);
                 rotate(-PI/2);
-                text("BLOCO", -16, -71);
+                text("LINHA", -16, -71);
                 pop();
 
                 push();

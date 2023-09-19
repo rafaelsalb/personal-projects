@@ -93,9 +93,6 @@ class Memory
         const block = parseInt(binary.slice(2, 4), 2);
         const index = parseInt(binary.slice(4, 6), 2);
 
-        console.log(tag * block_size + block)
-        console.log(index + 1)
-
         this.blocks[tag * block_size + block].cells[index + 1].data = data;
     }
 
@@ -169,7 +166,6 @@ class Cache extends Memory
                             let temp = i;
                             this.block_use_history.splice(this.block_use_history.indexOf(i), 1);
                             this.block_use_history.unshift(temp);
-                            console.log(this.block_use_history, i);
                             return i;
                         }
                     }
@@ -206,7 +202,6 @@ class Cache extends Memory
                         let temp = i;
                         this.set_use_history[set].splice(this.set_use_history[set].indexOf(i), 1);
                         this.set_use_history[set].unshift(temp);
-                        console.log(this.set_use_history, i);
                         return i;
                     }
                 }

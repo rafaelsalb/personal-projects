@@ -196,8 +196,6 @@ class CPU
             this.is_cache_hit = true;
             return this.cache.blocks[block].cells[index + 1].data;
         }
-
-        console.log("Cache miss");
         for(let i = 1; i < 5; i++)
         {
             this.memory.blocks[tag * block_size + block].cells[i].cell_color = color(127, 64, 64);
@@ -243,13 +241,8 @@ class CPU
 
         if (curr_policy == POLICIES.LFU)
         {
-            console.log("Cache miss");
-
             let least_used = Math.min.apply(Math, cache.block_use_count);
-            console.log(least_used);
             least_used = cache.block_use_count.indexOf(least_used);
-            console.log(least_used);
-
             cache.block_use_count[least_used] = 0;
 
             for(let i = 1; i < 5; i++)
@@ -264,12 +257,7 @@ class CPU
         }
         else if (curr_policy == POLICIES.LRU)
         {
-            console.log("Cache miss");
-
             let least_recent = cache.block_use_history[3];
-            console.log(least_recent);
-            console.log(cache.block_use_history);
-
             for(let i = 1; i < 5; i++)
             {
                 this.memory.blocks[tag * block_size + block].cells[i].cell_color = color(127, 64, 64);
@@ -282,8 +270,6 @@ class CPU
         }
         else if (curr_policy == POLICIES.random)
         {
-            console.log("Cache miss");
-
             let line = Math.floor(Math.random() * 4);
 
             for(let i = 1; i < 5; i++)
@@ -331,11 +317,8 @@ class CPU
 
         if (curr_policy == POLICIES.LFU)
         {
-            console.log("Cache miss");
-
             let least_used = Math.min.apply(Math, cache.set_use_count[search_set]);
             least_used = cache.set_use_count[search_set].indexOf(least_used);
-            console.log(cache.set_use_count);
 
             cache.set_use_count[search_set][least_used] = 0;
 
@@ -354,8 +337,6 @@ class CPU
             return this.memory.blocks[tag * block_size + least_used].cells[index + 1].data;
         }
         else if (curr_policy == POLICIES.LRU) {
-            console.log("Cache miss");
-
             let least_recent = cache.set_use_history[search_set][1];
 
             for (let i = 1; i < 5; i++) {
@@ -372,8 +353,6 @@ class CPU
             return this.memory.blocks[tag * block_size + least_recent].cells[index + 1].data;
         }
         else if (curr_policy == POLICIES.random) {
-            console.log("Cache miss");
-
             let line = Math.floor(Math.random() * 2);
 
             for (let i = 1; i < 5; i++) {
